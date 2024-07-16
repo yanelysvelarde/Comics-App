@@ -2,6 +2,7 @@
 //  ContentView.swift
 //  ComicsApp
 //
+//  Created by Kevin Sanchez on 7/13/24.
 //
 
 import SwiftUI
