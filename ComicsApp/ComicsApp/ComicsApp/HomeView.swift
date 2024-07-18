@@ -24,34 +24,36 @@ struct HomeView: View {
                         .foregroundColor(.red)
                 } else {
                     List(mangas) { manga in
-                        HStack {
-                            if let coverURL = URL(string: manga.cover) {
-                                AsyncImage(url: coverURL) { phase in
-                                    switch phase {
-                                    case .empty:
-                                        Color.gray.frame(width: 100, height: 150)
-                                    case .success(let image):
-                                        image.resizable()
-                                            .aspectRatio(contentMode: .fit)
-                                            .frame(width: 100, height: 150)
-                                    case .failure:
-                                        Color.red.frame(width: 100, height: 150)
-                                    @unknown default:
-                                        Color.gray.frame(width: 100, height: 150)
+                        NavigationLink(destination: MangaDetailView(manga: manga)) {
+                            HStack {
+                                if let coverURL = URL(string: manga.cover) {
+                                    AsyncImage(url: coverURL) { phase in
+                                        switch phase {
+                                        case .empty:
+                                            Color.gray.frame(width: 100, height: 150)
+                                        case .success(let image):
+                                            image.resizable()
+                                                .aspectRatio(contentMode: .fit)
+                                                .frame(width: 100, height: 150)
+                                        case .failure:
+                                            Color.red.frame(width: 100, height: 150)
+                                        @unknown default:
+                                            Color.gray.frame(width: 100, height: 150)
+                                        }
                                     }
+                                } else {
+                                    Color.gray.frame(width: 100, height: 150)
                                 }
-                            } else {
-                                Color.gray.frame(width: 100, height: 150)
-                            }
-                            VStack(alignment: .leading) {
-                                Text(manga.title)
-                                    .font(.headline)
-                                Text(manga.slug)
-                                    .font(.subheadline)
-                                    .lineLimit(2)
-                                Text("Genres: \(manga.genres.joined(separator: ", "))")
-                                    .font(.caption)
-                                    .foregroundColor(.secondary)
+                                VStack(alignment: .leading) {
+                                    Text(manga.title)
+                                        .font(.headline)
+                                    Text(manga.slug)
+                                        .font(.subheadline)
+                                        .lineLimit(2)
+                                    Text("Genres: \(manga.genres.joined(separator: ", "))")
+                                        .font(.caption)
+                                        .foregroundColor(.secondary)
+                                }
                             }
                         }
                     }
