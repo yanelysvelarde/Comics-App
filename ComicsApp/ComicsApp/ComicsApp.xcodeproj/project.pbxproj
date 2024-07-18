@@ -26,6 +26,7 @@
 		38B342D72C4332AA00431AD0 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 38B342D62C4332AA00431AD0 /* FirebaseDatabase */; };
 		38B342D92C4332AA00431AD0 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 38B342D82C4332AA00431AD0 /* FirebaseDatabaseSwift */; };
 		38B342DC2C4335BA00431AD0 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B342DB2C4335BA00431AD0 /* String.swift */; };
+		E2818A302C49B64900846674 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2818A2F2C49B64900846674 /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		38B342BD2C43208200431AD0 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		38B342C12C43321000431AD0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		38B342DB2C4335BA00431AD0 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		E2818A2F2C49B64900846674 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 				38B342AB2C431FC300431AD0 /* ComicsAppApp.swift */,
 				38B342B92C43201D00431AD0 /* CreateAccountView.swift */,
 				38B342BB2C43204500431AD0 /* HomeView.swift */,
+				E2818A2F2C49B64900846674 /* NetworkManager.swift */,
 				38B342BD2C43208200431AD0 /* LoginView.swift */,
 				38B342C12C43321000431AD0 /* GoogleService-Info.plist */,
 				38B342AF2C431FC600431AD0 /* Assets.xcassets */,
@@ -196,6 +199,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2818A302C49B64900846674 /* NetworkManager.swift in Sources */,
 				38B342BA2C43201D00431AD0 /* CreateAccountView.swift in Sources */,
 				38B342BC2C43204500431AD0 /* HomeView.swift in Sources */,
 				38B342DC2C4335BA00431AD0 /* String.swift in Sources */,
