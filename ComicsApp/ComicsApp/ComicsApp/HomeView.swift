@@ -10,15 +10,16 @@ struct HomeView: View {
 
     var body: some View {
         TabView {
-          
+            NavigationView {
+                VStack {
                     ZStack {
-                        // Add background image if necessary
+                      
                     }
                     .searchable(text: $searchTerm, prompt: "Search Comics")
                     .onSubmit(of: .search) {
                         searchManga()
                     }
-                    .onChange(of: searchTerm) {    newValue in   //esto funcino y luego dejo de funcionar :(
+                    .onChange(of: searchTerm) { newValue in
                         if newValue.isEmpty {
                             isSearching = false
                             fetchRecommendations()
@@ -27,7 +28,7 @@ struct HomeView: View {
                             searchManga()
                         }
                     }
-
+                    
                     if isLoading {
                         ProgressView("Loading...")
                     } else if let errorMessage = errorMessage {
@@ -82,11 +83,14 @@ struct HomeView: View {
                                     }
                                 }
                             }
-                        }  .navigationTitle("Manga Search")
+                        }
+                        .navigationTitle("Manga Search")
                     }
-               
-            } .tabItem {
+                }
+            }
+            .tabItem {
                 Label("Home", systemImage: "house")
+            }
 
             SavedContent()
                 .tabItem {
@@ -155,7 +159,7 @@ struct HomeView: View {
 
 struct StarRatingView: View {
     @Binding var rating: Int
-
+// en reparaciones, hubo un punto donde funciono... sad
     var body: some View {
         HStack {
             ForEach(1..<6) { star in
