@@ -10,8 +10,7 @@ struct HomeView: View {
 
     var body: some View {
         TabView {
-            NavigationStack {
-                VStack {
+          
                     ZStack {
                         // Add background image if necessary
                     }
@@ -19,7 +18,7 @@ struct HomeView: View {
                     .onSubmit(of: .search) {
                         searchManga()
                     }
-                    .onChange(of: searchTerm) { newValue in
+                    .onChange(of: searchTerm) {    newValue in   //esto funcino y luego dejo de funcionar :(
                         if newValue.isEmpty {
                             isSearching = false
                             fetchRecommendations()
@@ -83,14 +82,11 @@ struct HomeView: View {
                                     }
                                 }
                             }
-                        }
+                        }  .navigationTitle("Manga Search")
                     }
-                }
-                .navigationTitle("Manga Search")
-            }
-            .tabItem {
+               
+            } .tabItem {
                 Label("Home", systemImage: "house")
-            }
 
             SavedContent()
                 .tabItem {
