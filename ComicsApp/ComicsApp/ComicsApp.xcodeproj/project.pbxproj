@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A69BC622C4A357C00472EC9 /* RecoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A69BC612C4A357B00472EC9 /* RecoManager.swift */; };
+		2A69BC662C4A4C4500472EC9 /* SavedContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A69BC652C4A4C4500472EC9 /* SavedContent.swift */; };
 		38B342AC2C431FC300431AD0 /* ComicsAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B342AB2C431FC300431AD0 /* ComicsAppApp.swift */; };
 		38B342B02C431FC600431AD0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38B342AF2C431FC600431AD0 /* Assets.xcassets */; };
 		38B342B32C431FC600431AD0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38B342B22C431FC600431AD0 /* Preview Assets.xcassets */; };
@@ -31,6 +33,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2A69BC612C4A357B00472EC9 /* RecoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoManager.swift; sourceTree = "<group>"; };
+		2A69BC652C4A4C4500472EC9 /* SavedContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedContent.swift; sourceTree = "<group>"; };
 		38B342A82C431FC300431AD0 /* ComicsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ComicsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38B342AB2C431FC300431AD0 /* ComicsAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsAppApp.swift; sourceTree = "<group>"; };
 		38B342AF2C431FC600431AD0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -88,6 +92,8 @@
 				38B342DA2C43359000431AD0 /* Extensions */,
 				38B342AB2C431FC300431AD0 /* ComicsAppApp.swift */,
 				38B342B92C43201D00431AD0 /* CreateAccountView.swift */,
+				2A69BC612C4A357B00472EC9 /* RecoManager.swift */,
+				2A69BC652C4A4C4500472EC9 /* SavedContent.swift */,
 				38B342BB2C43204500431AD0 /* HomeView.swift */,
 				E2818A332C49CABF00846674 /* DetailedView.swift */,
 				E2818A2F2C49B64900846674 /* NetworkManager.swift */,
@@ -202,11 +208,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A69BC622C4A357C00472EC9 /* RecoManager.swift in Sources */,
 				E2818A302C49B64900846674 /* NetworkManager.swift in Sources */,
 				38B342BA2C43201D00431AD0 /* CreateAccountView.swift in Sources */,
 				38B342BC2C43204500431AD0 /* HomeView.swift in Sources */,
 				38B342DC2C4335BA00431AD0 /* String.swift in Sources */,
 				E2818A342C49CABF00846674 /* DetailedView.swift in Sources */,
+				2A69BC662C4A4C4500472EC9 /* SavedContent.swift in Sources */,
 				38B342BE2C43208200431AD0 /* LoginView.swift in Sources */,
 				38B342AC2C431FC300431AD0 /* ComicsAppApp.swift in Sources */,
 			);
@@ -356,6 +364,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = COP4655.ComicsApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -384,6 +395,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = COP4655.ComicsApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -9,6 +9,7 @@ struct Manga: Codable, Identifiable {
     let cover: String
     let chapters: Double
     let volumes: Double
+    var rating: Int?
 
     enum CodingKeys: String, CodingKey {
         case title, slug, genres, langs, cover, chapters, volumes
