@@ -13,7 +13,7 @@ struct HomeView: View {
             NavigationView {
                 VStack {
                     ZStack {
-                      
+                        // UI and stuff
                     }
                     .searchable(text: $searchTerm, prompt: "Search Comics")
                     .onSubmit(of: .search) {
@@ -28,7 +28,7 @@ struct HomeView: View {
                             searchManga()
                         }
                     }
-                    
+
                     if isLoading {
                         ProgressView("Loading...")
                     } else if let errorMessage = errorMessage {
@@ -66,7 +66,7 @@ struct HomeView: View {
                                             .font(.caption)
                                             .foregroundColor(.secondary)
                                         StarRatingView(rating: Binding(
-                                            get: { manga.rating ?? 0 },
+                                            get: { loadRating(for: manga) },
                                             set: { newValue in
                                                 var updatedManga = manga
                                                 updatedManga.rating = newValue
@@ -151,15 +151,16 @@ struct HomeView: View {
         return UserDefaults.standard.integer(forKey: "rating_\(manga.id)")
     }
 
+
     private func fetchRecommendations() {
-        // Fetch and update recommendations
-        // This method should populate the recommendations array
+        // alguien...
+        
     }
 }
 
 struct StarRatingView: View {
     @Binding var rating: Int
-// en reparaciones, hubo un punto donde funciono... sad
+    
     var body: some View {
         HStack {
             ForEach(1..<6) { star in
@@ -170,6 +171,7 @@ struct StarRatingView: View {
                     }
             }
         }
+      
     }
 }
 

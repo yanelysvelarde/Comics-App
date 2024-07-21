@@ -1,10 +1,3 @@
-//
-//  SavedContent.swift
-//  ComicsApp
-//
-//  Created by Yanelys on 7/19/24.
-//
-
 import SwiftUI
 
 struct SavedContent: View {
@@ -13,10 +6,8 @@ struct SavedContent: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                // Background color or image
                 Color.white.ignoresSafeArea()
 
-                // Main content
                 if savedMangas.isEmpty {
                     Text("No saved content")
                         .foregroundColor(.gray)
@@ -53,7 +44,7 @@ struct SavedContent: View {
                                         .font(.caption)
                                         .foregroundColor(.secondary)
                                     StarRatingView(rating: Binding(
-                                        get: { manga.rating ?? 0 },
+                                        get: { loadRating(for: manga) },
                                         set: { newValue in
                                             var updatedManga = manga
                                             updatedManga.rating = newValue
@@ -89,7 +80,12 @@ struct SavedContent: View {
     private func saveRating(for manga: Manga) {
         UserDefaults.standard.set(manga.rating, forKey: "rating_\(manga.id)")
     }
+    
+    private func loadRating(for manga: Manga) -> Int {
+        return UserDefaults.standard.integer(forKey: "rating_\(manga.id)")
+    }
 }
+
 
 struct SavedContent_Previews: PreviewProvider {
     static var previews: some View {
