@@ -30,6 +30,8 @@
 		38B342DC2C4335BA00431AD0 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B342DB2C4335BA00431AD0 /* String.swift */; };
 		E2818A302C49B64900846674 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2818A2F2C49B64900846674 /* NetworkManager.swift */; };
 		E2818A342C49CABF00846674 /* DetailedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2818A332C49CABF00846674 /* DetailedView.swift */; };
+		E2818A362C5032CA00846674 /* TrendingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2818A352C5032CA00846674 /* TrendingAPI.swift */; };
+		E2818A382C5033EE00846674 /* TrendingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2818A372C5033EE00846674 /* TrendingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +48,8 @@
 		38B342DB2C4335BA00431AD0 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		E2818A2F2C49B64900846674 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		E2818A332C49CABF00846674 /* DetailedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedView.swift; sourceTree = "<group>"; };
+		E2818A352C5032CA00846674 /* TrendingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingAPI.swift; sourceTree = "<group>"; };
+		E2818A372C5033EE00846674 /* TrendingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +101,8 @@
 				38B342BB2C43204500431AD0 /* HomeView.swift */,
 				E2818A332C49CABF00846674 /* DetailedView.swift */,
 				E2818A2F2C49B64900846674 /* NetworkManager.swift */,
+				E2818A352C5032CA00846674 /* TrendingAPI.swift */,
+				E2818A372C5033EE00846674 /* TrendingView.swift */,
 				38B342BD2C43208200431AD0 /* LoginView.swift */,
 				38B342C12C43321000431AD0 /* GoogleService-Info.plist */,
 				38B342AF2C431FC600431AD0 /* Assets.xcassets */,
@@ -210,11 +216,13 @@
 			files = (
 				2A69BC622C4A357C00472EC9 /* RecoManager.swift in Sources */,
 				E2818A302C49B64900846674 /* NetworkManager.swift in Sources */,
+				E2818A382C5033EE00846674 /* TrendingView.swift in Sources */,
 				38B342BA2C43201D00431AD0 /* CreateAccountView.swift in Sources */,
 				38B342BC2C43204500431AD0 /* HomeView.swift in Sources */,
 				38B342DC2C4335BA00431AD0 /* String.swift in Sources */,
 				E2818A342C49CABF00846674 /* DetailedView.swift in Sources */,
 				2A69BC662C4A4C4500472EC9 /* SavedContent.swift in Sources */,
+				E2818A362C5032CA00846674 /* TrendingAPI.swift in Sources */,
 				38B342BE2C43208200431AD0 /* LoginView.swift in Sources */,
 				38B342AC2C431FC300431AD0 /* ComicsAppApp.swift in Sources */,
 			);
