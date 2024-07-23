@@ -3,7 +3,6 @@ import SwiftUI
 struct HomeView: View {
     @State private var searchTerm = ""
     @State private var searchResults: [Manga] = []
-    @State private var recommendations: [Manga] = []
     @State private var isLoading = false
     @State private var errorMessage: String?
     @State private var isSearching = false
@@ -22,7 +21,7 @@ struct HomeView: View {
                     .onChange(of: searchTerm) { newValue in
                         if newValue.isEmpty {
                             isSearching = false
-                            fetchRecommendations()
+                            searchManga()
                         } else {
                             isSearching = true
                             searchManga()
@@ -86,6 +85,16 @@ struct HomeView: View {
                         }
                         .navigationTitle("Manga Search")
                     }
+
+                    NavigationLink(destination: TrendingView()) {
+                        Text("View Trending Manga")
+                            .font(.headline)
+                            .padding()
+                            .background(Color.blue)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                    }
+                    .padding()
                 }
             }
             .tabItem {
@@ -150,12 +159,6 @@ struct HomeView: View {
     private func loadRating(for manga: Manga) -> Int {
         return UserDefaults.standard.integer(forKey: "rating_\(manga.id)")
     }
-
-
-    private func fetchRecommendations() {
-        // alguien...
-        
-    }
 }
 
 struct StarRatingView: View {
@@ -171,13 +174,9 @@ struct StarRatingView: View {
                     }
             }
         }
-      
     }
 }
 
 #Preview {
     HomeView()
 }
-
-
-
