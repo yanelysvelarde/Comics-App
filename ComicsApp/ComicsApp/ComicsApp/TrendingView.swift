@@ -5,17 +5,24 @@ struct TrendingView: View {
     @State private var isLoading = false
     @State private var errorMessage: String?
 
+    private let darkAccentColor = Color(red: 95/255, green: 93/255, blue: 156/255) //#5F5D9C
+    private let primaryColor = Color(red: 97/255, green: 150/255, blue: 166/255) //#6196A6
+
     var body: some View {
         VStack {
             if isLoading {
                 ProgressView("Loading...")
+                    .progressViewStyle(CircularProgressViewStyle(tint: darkAccentColor))
             } else if let errorMessage = errorMessage {
                 VStack {
                     Text(errorMessage)
                         .foregroundColor(.red)
+                        .font(.custom("AmericanTypewriter", size: 20).bold())
                     Button("Retry") {
                         fetchTrendingMangas()
                     }
+                    .font(.custom("AmericanTypewriter", size: 20).bold())
+                    .foregroundColor(primaryColor)
                 }
             } else {
                 List(trendingMangas) { manga in
@@ -24,33 +31,37 @@ struct TrendingView: View {
                             AsyncImage(url: coverURL) { phase in
                                 switch phase {
                                 case .empty:
-                                    Color.gray.frame(width: 100, height: 150)
+                                    Color.gray.frame(width: 120, height: 180)
                                 case .success(let image):
                                     image.resizable()
                                         .aspectRatio(contentMode: .fit)
-                                        .frame(width: 100, height: 150)
+                                        .frame(width: 120, height: 180)
                                 case .failure:
-                                    Color.red.frame(width: 100, height: 150)
+                                    Color.red.frame(width: 120, height: 180)
                                 @unknown default:
-                                    Color.gray.frame(width: 100, height: 150)
+                                    Color.gray.frame(width: 120, height: 180)
                                 }
                             }
                         } else {
-                            Color.gray.frame(width: 100, height: 150)
+                            Color.gray.frame(width: 120, height: 180)
                         }
                         VStack(alignment: .leading) {
                             Text(manga.title)
-                                .font(.headline)
+                                .font(.custom("AmericanTypewriter", size: 22).bold())
+                                .foregroundColor(darkAccentColor)
                             Text(manga.slug)
-                                .font(.subheadline)
+                                .font(.custom("AmericanTypewriter", size: 16).bold())
                                 .lineLimit(2)
+                                .foregroundColor(primaryColor)
                             Text("Rating: \(manga.rating, specifier: "%.2f")")
-                                .font(.caption)
+                                .font(.custom("AmericanTypewriter", size: 14).bold())
                                 .foregroundColor(.secondary)
                         }
+                        .padding(.leading, 10)
                     }
                 }
                 .navigationTitle("Trending Manga")
+                .font(.custom("AmericanTypewriter", size: 20).bold())
             }
         }
         .onAppear {
@@ -75,6 +86,8 @@ struct TrendingView: View {
         }
     }
 }
+
+
 
 #Preview {
     TrendingView()

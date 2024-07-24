@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A1CEDB22C5066A1004826A6 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 2A1CEDB12C5066A1004826A6 /* SDWebImageSwiftUI */; };
 		2A69BC622C4A357C00472EC9 /* RecoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A69BC612C4A357B00472EC9 /* RecoManager.swift */; };
 		2A69BC662C4A4C4500472EC9 /* SavedContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A69BC652C4A4C4500472EC9 /* SavedContent.swift */; };
 		38B342AC2C431FC300431AD0 /* ComicsAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B342AB2C431FC300431AD0 /* ComicsAppApp.swift */; };
@@ -57,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A1CEDB22C5066A1004826A6 /* SDWebImageSwiftUI in Frameworks */,
 				38B342D72C4332AA00431AD0 /* FirebaseDatabase in Frameworks */,
 				38B342C92C4332AA00431AD0 /* FirebaseAnalyticsSwift in Frameworks */,
 				38B342C52C4332AA00431AD0 /* FirebaseAnalytics in Frameworks */,
@@ -155,6 +157,7 @@
 				38B342D42C4332AA00431AD0 /* FirebaseCrashlytics */,
 				38B342D62C4332AA00431AD0 /* FirebaseDatabase */,
 				38B342D82C4332AA00431AD0 /* FirebaseDatabaseSwift */,
+				2A1CEDB12C5066A1004826A6 /* SDWebImageSwiftUI */,
 			);
 			productName = ComicsApp;
 			productReference = 38B342A82C431FC300431AD0 /* ComicsApp.app */;
@@ -186,6 +189,7 @@
 			mainGroup = 38B3429F2C431FC300431AD0;
 			packageReferences = (
 				38B342C32C4332AA00431AD0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				2A1CEDB02C5066A1004826A6 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			productRefGroup = 38B342A92C431FC300431AD0 /* Products */;
 			projectDirPath = "";
@@ -436,6 +440,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		2A1CEDB02C5066A1004826A6 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.1;
+			};
+		};
 		38B342C32C4332AA00431AD0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -447,6 +459,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		2A1CEDB12C5066A1004826A6 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2A1CEDB02C5066A1004826A6 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
 		38B342C42C4332AA00431AD0 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 38B342C32C4332AA00431AD0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

@@ -1,4 +1,5 @@
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct HomeView: View {
     @State private var searchTerm = ""
@@ -6,6 +7,12 @@ struct HomeView: View {
     @State private var isLoading = false
     @State private var errorMessage: String?
     @State private var isSearching = false
+    @State private var isAnimating: Bool = false
+
+    private let backgroundColor = Color(red: 244/255, green: 237/255, blue: 204/255) //#F4EDCC
+    private let primaryColor = Color(red: 97/255, green: 150/255, blue: 166/255) //#6196A6
+    private let accentColor = Color(red: 164/255, green: 206/255, blue: 149/255) //#A4CE95
+    private let darkAccentColor = Color(red: 95/255, green: 93/255, blue: 156/255) //#5F5D9C 
 
     var body: some View {
         TabView {
@@ -29,73 +36,94 @@ struct HomeView: View {
                     }
 
                     if isLoading {
-                        ProgressView("Loading...")
+                        VStack {
+                            AnimatedImage(name: "vidio-output.gif", isAnimating: $isAnimating)
+                                .frame(width: 100, height: 100)
+                            Text("Loading...")
+                                .font(.custom("AmericanTypewriter", size: 20))
+                                .foregroundColor(darkAccentColor)
+                        }
                     } else if let errorMessage = errorMessage {
                         Text(errorMessage)
                             .foregroundColor(.red)
+                            .font(.custom("AmericanTypewriter", size: 16))
                     } else {
-                        List(searchResults) { manga in
-                            NavigationLink(destination: MangaDetailView(manga: manga)) {
-                                HStack {
-                                    if let coverURL = URL(string: manga.cover) {
-                                        AsyncImage(url: coverURL) { phase in
-                                            switch phase {
-                                            case .empty:
-                                                Color.gray.frame(width: 100, height: 150)
-                                            case .success(let image):
-                                                image.resizable()
-                                                    .aspectRatio(contentMode: .fit)
-                                                    .frame(width: 100, height: 150)
-                                            case .failure:
-                                                Color.red.frame(width: 100, height: 150)
-                                            @unknown default:
-                                                Color.gray.frame(width: 100, height: 150)
+                        List {
+                            ForEach(searchResults) { manga in
+                                NavigationLink(destination: MangaDetailView(manga: manga)) {
+                                    HStack {
+                                        if let coverURL = URL(string: manga.cover) {
+                                            AsyncImage(url: coverURL) { phase in
+                                                switch phase {
+                                                case .empty:
+                                                    Color.gray.frame(width: 100, height: 150)
+                                                case .success(let image):
+                                                    image.resizable()
+                                                        .aspectRatio(contentMode: .fit)
+                                                        .frame(width: 100, height: 150)
+                                                case .failure:
+                                                    Color.red.frame(width: 100, height: 150)
+                                                @unknown default:
+                                                    Color.gray.frame(width: 100, height: 150)
+                                                }
                                             }
+                                        } else {
+                                            Color.gray.frame(width: 100, height: 150)
                                         }
-                                    } else {
-                                        Color.gray.frame(width: 100, height: 150)
+                                        VStack(alignment: .leading) {
+                                            Text(manga.title)
+                                                .font(.custom("AmericanTypewriter", size: 18))
+                                                .foregroundColor(darkAccentColor)
+                                            Text(manga.slug)
+                                                .font(.custom("AmericanTypewriter", size: 14))
+                                                .lineLimit(2)
+                                                .foregroundColor(primaryColor)
+                                            Text("Genres: \(manga.genres.joined(separator: ", "))")
+                                                .font(.custom("AmericanTypewriter", size: 12))
+                                                .foregroundColor(.secondary)
+                                            StarRatingView(rating: Binding(
+                                                get: { loadRating(for: manga) },
+                                                set: { newValue in
+                                                    var updatedManga = manga
+                                                    updatedManga.rating = newValue
+                                                    saveRating(for: updatedManga)
+                                                    // Refresh search results to update ratings
+                                                    if let index = searchResults.firstIndex(where: { $0.id == updatedManga.id }) {
+                                                        searchResults[index].rating = newValue
+                                                    }
+                                                }
+                                            ))
+                                        }
+                                        Spacer()
+                                        Button(action: {
+                                            saveManga(manga)
+                                        }) {
+                                            Image(systemName: "bookmark")
+                                                .foregroundColor(accentColor)
+                                        }
                                     }
-                                    VStack(alignment: .leading) {
-                                        Text(manga.title)
-                                            .font(.headline)
-                                        Text(manga.slug)
-                                            .font(.subheadline)
-                                            .lineLimit(2)
-                                        Text("Genres: \(manga.genres.joined(separator: ", "))")
-                                            .font(.caption)
-                                            .foregroundColor(.secondary)
-                                        StarRatingView(rating: Binding(
-                                            get: { loadRating(for: manga) },
-                                            set: { newValue in
-                                                var updatedManga = manga
-                                                updatedManga.rating = newValue
-                                                saveRating(for: updatedManga)
-                                            }
-                                        ))
-                                    }
-                                    Spacer()
-                                    Button(action: {
-                                        saveManga(manga)
-                                    }) {
-                                        Image(systemName: "bookmark")
-                                            .foregroundColor(.blue)
-                                    }
+                                    .padding()
+                                    .background(backgroundColor) //background color
                                 }
+                                .listRowBackground(backgroundColor) //list row background color
                             }
                         }
-                        .navigationTitle("Manga Search")
+                        .listStyle(PlainListStyle()) //for list style to do not affect background color
                     }
 
                     NavigationLink(destination: TrendingView()) {
-                        Text("View Trending Manga")
-                            .font(.headline)
+                        Text("Trending Manga")
+                            .font(.custom("AmericanTypewriter", size: 18))
                             .padding()
-                            .background(Color.blue)
+                            .background(primaryColor)
                             .foregroundColor(.white)
                             .cornerRadius(10)
                     }
                     .padding()
                 }
+                .background(backgroundColor)
+                .navigationTitle("Manga Search")
+                .font(.custom("AmericanTypewriter", size: 18))
             }
             .tabItem {
                 Label("Home", systemImage: "house")
@@ -105,6 +133,7 @@ struct HomeView: View {
                 .tabItem {
                     Label("Saved Content", systemImage: "bookmark")
                 }
+                .background(backgroundColor)
         }
     }
 
@@ -180,3 +209,5 @@ struct StarRatingView: View {
 #Preview {
     HomeView()
 }
+
+

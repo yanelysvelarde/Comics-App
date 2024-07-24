@@ -1,7 +1,7 @@
 import Foundation
-//ignoren esto... a no ser que sepan como ponerlo en el homeview (yo de momento no)
-//pista, es el API de MangaDex
-//aka. el otro api no me daba recomendaciones :(
+//ignore this
+//MangaDex API just in case
+
 struct MangaDexRecommendation: Codable, Identifiable {
     let id: String
     let title: String
