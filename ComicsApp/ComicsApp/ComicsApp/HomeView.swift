@@ -12,7 +12,7 @@ struct HomeView: View {
     private let backgroundColor = Color(red: 244/255, green: 237/255, blue: 204/255) //#F4EDCC
     private let primaryColor = Color(red: 97/255, green: 150/255, blue: 166/255) //#6196A6
     private let accentColor = Color(red: 164/255, green: 206/255, blue: 149/255) //#A4CE95
-    private let darkAccentColor = Color(red: 95/255, green: 93/255, blue: 156/255) //#5F5D9C 
+    private let darkAccentColor = Color(red: 95/255, green: 93/255, blue: 156/255) //#5F5D9C
 
     var body: some View {
         TabView {
@@ -28,7 +28,9 @@ struct HomeView: View {
                     .onChange(of: searchTerm) { newValue in
                         if newValue.isEmpty {
                             isSearching = false
-                            searchManga()
+                            searchResults = [] // Clear search results
+                            errorMessage = nil // Optionally clear any existing error messages
+                            isLoading = false // Optionally stop loading indicator
                         } else {
                             isSearching = true
                             searchManga()
@@ -209,5 +211,4 @@ struct StarRatingView: View {
 #Preview {
     HomeView()
 }
-
 
