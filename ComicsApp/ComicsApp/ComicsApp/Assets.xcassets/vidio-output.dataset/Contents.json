@@ -1,0 +1,13 @@
+{
+  "data" : [
+    {
+      "filename" : "vidio-output.gif",
+      "idiom" : "universal",
+      "universal-type-identifier" : "com.compuserve.gif"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
